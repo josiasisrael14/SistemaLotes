@@ -150,29 +150,83 @@ namespace SistemaLotes.Controllers
 
         public async Task<IActionResult> guardar(int idlotess, decimal preciocontado, string archivoImagenn, int idcliente, IFormFile archivoVoucher, string nombrelotes, int idetapass, string etapa)
         {
-            return Json(new { success = true, message = "Guardado Exitoso" });
+            byte[] archivoImagenes = null;
+            byte[] archivoVouchers = null;
+            byte[] imagenproyectolotes = null;
+            string nombretransaccion = "verificacion";
+            string estadotransaccion = "contado";
+
+            try
+            {
+                var cleanerBase64 = archivoImagenn.Substring(22);
+                archivoImagenes = System.Convert.FromBase64String(cleanerBase64);
+                //using (var fs1 = archivoImagenn.OpenReadStream())
+                //using (var ms1 = new MemoryStream())
+
+                //{
+                //    fs1.CopyTo(ms1);
+                //    archivoImagenes = ms1.ToArray();
+
+                //}
+
+                using (var fs1 = archivoVoucher.OpenReadStream())
+                using (var ms1 = new MemoryStream())
+
+                {
+                    fs1.CopyTo(ms1);
+                    archivoVouchers = ms1.ToArray();
+
+                }
+
+
+                DateTime fechaventa = DateTime.Now;
+                idusuariosU = ValidarLogin.idusuarios;
+
+                var enviardatos = new entidad
+                {
+                    nombretransaccion = nombretransaccion,
+                    idetapas = idetapass,
+                    etapa = etapa,
+                    idlotes = idlotess,
+                    nombrelotes = nombrelotes,
+                    imagenlotes1 = archivoImagenes,
+                    preciocontado = preciocontado,
+                    PrecioInicial = 0,
+                    LetrasPagar = 0,
+                    restante = 0,
+                    idusuario = idusuariosU,
+                    idcliente = idcliente,
+                    fechaventaS = fechaventa,
+                    estadotransaccion = estadotransaccion,
+                    voucher = archivoVouchers,
+
+
+
+                };
+
+                _ventascontado.SP_INSERTTRANSACCION(enviardatos);
+             
+
+
+
+
+                return Json(new { success = true, message = "Guardado Exitoso" });
+
+            }
+            catch (Exception ex)
+            {
+
+
+                //return Json(new { error = ex.ToString() });
+                return Json(String.Format("'success':'false','error': " + ex + " "));
+
+            }
+
+
+            //return Json(new { success = true, message = "Guardado Exitoso" });
         }
 
 
-
-        public async Task<IActionResult> llamar()
-        {
-            string token = "EAAIw8yc9N6oBAAqHOmuYuES9VG8JhrgCZAWZBZBIwvHznjXOSc2wDf4k8V9jNKv4MCSigKXdual5cULr9yGp7JJMwcF4CHUFlrgBwA27A4oqqNy2s8AOWEQgYMXYp441ZABZA8YB5U7H6i3vYaKxQiphZBxjJZCBehzUh7VubbcYtZBFkFDUqSE9yxzeVkk96FzBvDkvmZBZAPeAZDZD";
-            //Identificador de número de teléfono
-            string idTelefono = "103679482669791";
-            //Nuestro telefono
-            string telefono = "51912095876";
-            HttpClient client = new HttpClient();
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://graph.facebook.com/v15.0/" + idTelefono + "/messages");
-            request.Headers.Add("Authorization", "Bearer " + token);
-            request.Content = new StringContent("{ \"messaging_product\": \"whatsapp\", \"to\": \"" + telefono + "\", \"type\": \"template\", \"template\": { \"name\": \"hello_world\", \"language\": { \"code\": \"en_US\" } } }");
-            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            HttpResponseMessage response = await client.SendAsync(request);
-            //response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-
-            return Json(new { success = true, message = "Guardado Exitoso" });
-        }
 
 
         public class Result

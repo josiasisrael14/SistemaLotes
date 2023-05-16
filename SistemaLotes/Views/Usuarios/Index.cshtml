@@ -326,7 +326,7 @@
                      <td>
                      
                         
- <a  class="btn btn btn-primary btn-xs context-menu-one" data-id= "@item.idetapas" onclick="return editar('@item.idetapas')" href=""><i class='fas fa-edit'></i></a>
+ <a  class="btn btn btn-primary btn-xs context-menu-one" data-id= "@item.idusuario" onclick="return editar('@item.idusuario')" href=""><i class='fas fa-edit'></i></a>
 
                      </td> 
                        <td>
@@ -383,12 +383,11 @@
 
 
                               <div class="form-group">
-                            <label for="descripcion" id="archivoVoucher">Foto</label>
-                            <input type="file" id="archivoImagenn" name="archivoImagenn" class="form-control input-sm" >
-                            <td><img src="" id="archivoVoucher" height="50px" width="50px"></td>
+                            <label for="descripcion" id="respuesta_archivoImagen">Imagen</label>
+                            <input type="file" id="archivoImagen" name="archivoImagen" class="form-control input-sm" >
+                            <td><img src="" id="archivoImagenn" height="50px" width="50px"></td>
 
-                             </div>
-
+                        </div>
 
 
 
@@ -482,6 +481,70 @@
            });
 
         });
+
+
+
+      var nombre = document.getElementById("nombre");
+      var logeo = document.getElementById("logeo");
+      var password = document.getElementById("password");
+      var botonEnviar = document.getElementById("btnguardar");
+      
+        botonEnviar.disabled = true;
+      function validarCampos() {
+    // Verificar si hay valores en ambos campos
+    if (nombre.value != "" && logeo.value != "" && password.value !="") {
+      botonEnviar.disabled = false; // Habilitar el botón de envío
+    } else {
+      botonEnviar.disabled = true; // Deshabilitar el botón de envío
+    }
+  }
+
+      nombre.addEventListener("input", validarCampos);
+      logeo.addEventListener("input", validarCampos);
+      password.addEventListener("input", validarCampos);
+
+
+      function editar(idusuario) { 
+        //alert(iddepartamento);
+       
+    $.ajax({
+
+        //url:"/recuperarID/listarid/"+idempleados,
+        method:"GET",
+        data: {idusuario:idusuario},
+        url:"/Usuarios/listaridD",
+        contentType: false,
+        dataType:"json",
+        success: function(usuarios) {
+            
+            bto = (usuarios[0].imagen);
+            var cade = bto;
+            var resultado = "data:image/png;base64,"+cade;
+            $('#idusuarios').val(usuarios[0].idusuario);
+            $('#nombre').val(usuarios[0].nombre);
+            $('#logeo').val(usuarios[0].logeo);
+            $('#password').val(usuarios[0].contrazeña);
+            
+            
+            $('#archivoImagenn').attr("src",resultado);
+            $('#archivoImagenn').attr("#archivoImagen");
+            $("#modalCajaMov").modal('show');
+        
+        },
+
+        error: function(errormessage) {
+
+
+            alert(errormessage.responseText);
+
+        }
+
+    });
+
+    return false;
+
+
+     }
 
 
 

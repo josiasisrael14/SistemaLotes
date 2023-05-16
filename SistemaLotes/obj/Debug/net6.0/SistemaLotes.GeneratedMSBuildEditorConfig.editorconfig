@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\LAPTOP HPP\Desktop\sistemas_c\SistemaLotes\SistemaLotes
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/LAPTOP HPP/Desktop/sistemas_c/SistemaLotes/SistemaLotes/Views/Clientes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/LAPTOP HPP/Desktop/sistemas_c/SistemaLotes/SistemaLotes/Views/Etapas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXRhcGFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
