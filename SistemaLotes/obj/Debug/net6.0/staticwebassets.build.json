@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kvRc2RhM+1syuWYLmPDh/pNBL6h+/TItUfBUI2j4WzQ=",
+  "Hash": "jBDwNcWvkeg0MdvJc9LOkjurBM8RvVmkLYmaHXqZp5U=",
   "Source": "SistemaLotes",
   "BasePath": "_content/SistemaLotes",
   "Mode": "Default",
@@ -1307,6 +1307,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Admintle\\jquery\\jquery-3.5.1.js"
+    },
+    {
+      "Identity": "C:\\Users\\LAPTOP HPP\\Desktop\\sistemas_c\\SistemaLotes\\SistemaLotes\\wwwroot\\Admintle\\jquery\\moment.js",
+      "SourceId": "SistemaLotes",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LAPTOP HPP\\Desktop\\sistemas_c\\SistemaLotes\\SistemaLotes\\wwwroot\\",
+      "BasePath": "_content/SistemaLotes",
+      "RelativePath": "Admintle/jquery/moment.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Admintle\\jquery\\moment.js"
     },
     {
       "Identity": "C:\\Users\\LAPTOP HPP\\Desktop\\sistemas_c\\SistemaLotes\\SistemaLotes\\wwwroot\\Admintle\\plugins\\bootstrap\\js\\bootstrap.bundle.js",

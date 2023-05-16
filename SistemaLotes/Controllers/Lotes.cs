@@ -19,7 +19,7 @@ namespace SistemaLotes.Controllers
 
         }
 
-        [HttpGet]
+        //[HttpGet]
         public IActionResult Index()
 
          
@@ -46,12 +46,12 @@ namespace SistemaLotes.Controllers
                 //entidad1.ImagenLotes = (byte[])dt.Rows[i][7];
                 //entidad1.ImagenProyecto = (byte[])dt.Rows[i][8];
                 entidad.Add(entidad1);
-                ViewBag.entidad = entidad;
+              
 
 
             }
 
-
+            ViewBag.entidad = entidad;
 
 
 

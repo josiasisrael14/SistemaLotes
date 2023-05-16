@@ -69,11 +69,11 @@ namespace SistemaLotes.Controllers
 
 
         [HttpPost]
-        public IActionResult guardar(int idusuarios, string nombre, string logeo,string password,IFormFile archivoImagenn)
+        public IActionResult guardar(int idusuarios, string nombre, string logeo,string password,IFormFile archivoImagen)
         {
 
 
-
+            var file = archivoImagen;
             byte[] archivoImagenes = null;
            
           
@@ -85,22 +85,40 @@ namespace SistemaLotes.Controllers
 
                 if (idusuarios > 0)
                 {
-                    using (var fs1 = archivoImagenn.OpenReadStream())
-                    using (var ms1 = new MemoryStream())
 
+
+                    if (file == null)
                     {
-                        fs1.CopyTo(ms1);
-                        archivoImagenes = ms1.ToArray();
+
+                        using (var ms1 = new MemoryStream())
+                        {
+
+                            archivoImagenes = ms1.ToArray();
+                        }
+
 
                     }
+                    else
+                    {
 
 
+
+                        using (var fs1 = archivoImagen.OpenReadStream())
+                        using (var ms1 = new MemoryStream())
+
+                        {
+                            //fs1.CopyTo(ms1);
+                            archivoImagenes = ms1.ToArray();
+
+                        }
+
+                    }
 
 
                     DateTime fechaho = DateTime.Now;
                     var enviardatosupadte = new entidad
                     {
-
+                        idusuario=idusuarios,
                         nombre = nombre,
                         logeo = logeo,
                         fechacreado = fechaho,
@@ -120,7 +138,7 @@ namespace SistemaLotes.Controllers
                 {
 
 
-                    using (var fs1 = archivoImagenn.OpenReadStream())
+                    using (var fs1 = archivoImagen.OpenReadStream())
                     using (var ms1 = new MemoryStream())
 
                     {
@@ -166,6 +184,37 @@ namespace SistemaLotes.Controllers
         }
 
 
+        public  JsonResult listaridD(int idusuario)
+        {
+
+            DataTable dt;
+            List<entidad> entidades = new List<entidad>();
+
+            var id = new entidad
+            {
+
+                idusuario = idusuario
+            };
+
+            dt = _usuario.SP_LISTARUSUARIOSID(id);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+
+                entidad entidadess = new entidad();
+
+                entidadess.idusuario = dt.Rows[i][0].GetHashCode();
+                entidadess.nombre = dt.Rows[i][1].ToString();
+                entidadess.logeo = dt.Rows[i][2].ToString();
+                entidadess.contrazeña = dt.Rows[i][3].ToString();
+                entidadess.imagen = (byte[])dt.Rows[i][4];
+
+                entidades.Add(entidadess);
+            }
+            return Json(entidades);
+
+
+
+        }
 
 
 

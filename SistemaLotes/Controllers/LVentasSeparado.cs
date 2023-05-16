@@ -147,7 +147,75 @@ namespace SistemaLotes.Controllers
         [HttpPost]
         public async Task<IActionResult> guardar(int idlotess, string nombrelotes, int idetapass, string etapa, decimal preciocontado,decimal precioinicial,int letras,decimal restante, string archivoImagenn, int idcliente, IFormFile archivoVoucher ,decimal cuotamonto)
         {
-            return Json(new { success = true, message = "Guardado Exitoso" });
+            byte[] archivoImagenes = null;
+            byte[] archivoVouchers = null;
+            byte[] imagenproyectolotes = null;
+            string nombretransaccion = "verificacion";
+            string estadotransaccion = "separado";
+            try
+            {
+                var cleanerBase64 = archivoImagenn.Substring(22);
+                archivoImagenes = System.Convert.FromBase64String(cleanerBase64);
+                //using (var fs1 = archivoImagenn.OpenReadStream())
+                //using (var ms1 = new MemoryStream())
+
+                //{
+                //    fs1.CopyTo(ms1);
+                //    archivoImagenes = ms1.ToArray();
+
+                //}
+
+                using (var fs1 = archivoVoucher.OpenReadStream())
+                using (var ms1 = new MemoryStream())
+
+                {
+                    fs1.CopyTo(ms1);
+                    archivoVouchers = ms1.ToArray();
+
+                }
+
+
+                DateTime fechaventa = DateTime.Now;
+                idusuariosU = ValidarLogin.idusuarios;
+
+                var enviardatos = new entidad
+                {
+                    nombretransaccion = nombretransaccion,
+                    idetapas = idetapass,
+                    etapa = etapa,
+                    idlotes = idlotess,
+                    nombrelotes = nombrelotes,
+                    imagenlotes1 = archivoImagenes,
+                    preciocontado = preciocontado,
+                    PrecioInicial = precioinicial,
+                    LetrasPagar = letras,
+                    restante = restante,
+                    idusuario = idusuariosU,
+                    idcliente = idcliente,
+                    fechaventaS = fechaventa,
+                    estadotransaccion = estadotransaccion,
+                    voucher = archivoVouchers,
+                    montopagar = cuotamonto,
+
+
+
+                };
+
+                _LVentasSeparado.SP_INSERTTRANSACCION(enviardatos);
+             
+
+                return Json(new { success = true, message = "Guardado Exitoso" });
+
+            }
+            catch (Exception ex)
+            {
+
+
+                //return Json(new { error = ex.ToString() });
+                return Json(String.Format("'success':'false','error': " + ex + " "));
+
+            }
+
         }
 
 

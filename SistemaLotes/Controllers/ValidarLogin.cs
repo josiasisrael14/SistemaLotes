@@ -55,12 +55,12 @@ namespace SistemaLotes.Controllers
                  logeos = dt.Rows[0][1].ToString();
                  imagen1 = (byte[])dt.Rows[0][2];
                  imagen2 = imagen1;
-                //idusuario = dt.Rows[0][4].GetHashCode();
+                idusuarios = dt.Rows[0][4].GetHashCode();
                 //imagen2 = imagen1;
                 //idusuarios = idusuario;
-                
 
-               
+
+
                 HttpContext.Session.SetString("sess_1", nombre);
                
 
