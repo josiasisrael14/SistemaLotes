@@ -37,9 +37,11 @@ namespace SistemaLotes.Models
 
                     int ver;
                     //SqlCommand com = new SqlCommand("sp_loguer",con);
+                   
                     com.CommandType = CommandType.StoredProcedure;
                     com.Parameters.AddWithValue("@logeo", acceso.logeo);
                     com.Parameters.AddWithValue("@contrazeña", acceso.contrazeña);
+                    com.CommandTimeout = 0;
                     SqlDataAdapter da = new SqlDataAdapter(com);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -352,6 +354,55 @@ namespace SistemaLotes.Models
             }
         }
 
+        public DataTable SP_LISTARUSUARIOSID(entidad datos)
+        {
+
+
+            using (SqlConnection sql = new SqlConnection(_conexion))
+            {
+
+                using (SqlCommand cmd = new SqlCommand("SP_LISTARUSUARIOSID", sql))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idusuario", datos.idusuario);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+
+
+                }
+
+            }
+
+        }
+
+
+
+
+
+        public DataTable ListarClientes()
+        {
+
+            using (SqlConnection sql = new SqlConnection(_conexion))
+            {
+                using (SqlCommand com = new SqlCommand("SP_LISTARCLIENTE", sql))
+                {
+                    com.CommandTimeout = 0;
+                    SqlDataAdapter da = new SqlDataAdapter(com);
+
+                    DataTable dt = new DataTable();
+
+                    da.Fill(dt);
+                    return dt;
+
+                }
+
+
+            }
+        }
+
+
 
 
 
@@ -657,7 +708,28 @@ namespace SistemaLotes.Models
             }
         }
 
+        public DataTable SP_LISTAREMPLEADOS()
+        {
 
+            using (SqlConnection sql = new SqlConnection(_conexion))
+            {
+
+                using (SqlCommand com = new SqlCommand("SP_LISTAREMPLEADOS", sql))
+                {
+
+                    //SqlCommand com = new SqlCommand("LISTAREMPLEADOS", sql);
+                    SqlDataAdapter da = new SqlDataAdapter(com);
+
+                    DataTable dt = new DataTable();
+
+                    da.Fill(dt);
+
+                    return dt;
+                }
+
+            }
+
+        }
 
 
 
@@ -949,6 +1021,7 @@ namespace SistemaLotes.Models
                 using (SqlCommand cmd = new SqlCommand("SP_INSERTARLOTES", sql))
                 {
                     int ver;
+                    cmd.CommandTimeout = 0;
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@idetapas", datos.idetapas);

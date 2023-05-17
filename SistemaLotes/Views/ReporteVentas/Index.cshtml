@@ -1,6 +1,6 @@
 ﻿@{
     //@ViewBag.itemss;
-    List<SelectListItem> items = (List<SelectListItem>)ViewBag.itemn;
+    List<SelectListItem> usuarios = (List<SelectListItem>)ViewBag.usuarios;
 
     List<SelectListItem> itemslotes = (List<SelectListItem>)ViewBag.itemslotes;
       List<SelectListItem> itemcliente= (List<SelectListItem>)ViewBag.itemcliente;
@@ -328,8 +328,8 @@
                
                 <div class="form-inline col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <label>Empleado</label>
-@*        @Html.DropDownList("idempleados", items, "SELECCIONAR", new { @class = "form-control",@value="" ,@name="idempleados", @id="idempleados" ,@onchange="recuperar(this);"})
-*@
+        @Html.DropDownList("idempleados", usuarios, "SELECCIONAR", new { @class = "form-control",@value="" ,@name="idempleados", @id="idempleados" ,@onchange="recuperar(this);"})
+
    
                   <br>
               
@@ -349,13 +349,13 @@
                         <tr>
                          
                           
-                      
+                         <th>Codigo</th>
                         <th>Nombres</th>
-                        <th>Asistencia</th>
-                        <th>Fecha/Hora</th>
-                         <th>Código</th>
-
-
+                        <th>Precio</th>
+                        <th>Cliente</th>
+                         <th>Lote</th>
+                         <th>Fecha</th>
+                         <th>Etapa</th>
 
                         </tr>
                     </thead>
@@ -396,9 +396,10 @@
 <!-- ./wrapper -->
 
  
- <script src="~/Admintle/jquery/jquery-3.5.1.js"></script>
+ @*<script src="~/Admintle/jquery/jquery-3.5.1.js"></script>
 <script src="~/Admintle/datatable/jquery.dataTables.min.js"></script>
-<script src="~/Admintle/jquery/bootstrap.bundle.min.js"></script>
+
+<script src="~/Admintle/jquery/bootstrap.bundle.min.js"></script>*@
 </body>
 </html>
 
@@ -414,8 +415,7 @@ $(document).ready(function() {
 
 function listar(){
 
-//var fechainicio = $("#fechainicio").val();
-//var fechafin = $("#fechafin").val();
+
 var idempleados = $("#idempleados").val();
 
     //$("#tabla").DataTable().fnDestroy();
@@ -423,7 +423,7 @@ var idempleados = $("#idempleados").val();
  var tablas= $("#tabla").DataTable({
   
  "ajax": {
-  "url": '@Url.Action("listarReporteVenta", "ReporteVenta")?idempleados=' + $("#idempleados").val(),
+  "url": '@Url.Action("listarReporteVenta", "ReporteVentas")?idempleados=' + $("#idempleados").val(),
   //"data":"{idempleados:idempleados}",
   "type": "POST",
   "datatype": "json"
@@ -434,8 +434,15 @@ var idempleados = $("#idempleados").val();
             { "data": "preciocontado" },
             { "data": "nombrecliente"},
             { "data": "nombrelotes"},
-            { "data": "fechaventa"},
-            { "data": "NombreEtapa "}
+            { "data": "fechaventa",  
+              "render" : function(data,type,row){
+                  var fecha = moment(data).format('DD/MM/YYYY HH:mm:ss');
+                  return fecha;
+
+              }
+            
+            },
+            { "data": "etapa"}
         ],
         bDestroy:"true",
         dom:"Bfrtip",
