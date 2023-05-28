@@ -35,7 +35,7 @@ Hola soy jairo! soy **Programador Backend**:iphone:, realice un proyecto fullsta
 
 
 <h1>Controlador</h1>
-
+<p>En el controlador estoy realisando las diferentes  logicas para poder enviar los siguientes datos necesitados</p>
 ![image](https://github.com/josiasisrael14/SistemaLotes/assets/43103053/d72b0455-cd78-4959-83ab-512c42851082)
 
 ![image](https://github.com/josiasisrael14/SistemaLotes/assets/43103053/7f84f08d-f37b-4437-963e-4929b5bd5268)
@@ -55,6 +55,11 @@ Hola soy jairo! soy **Programador Backend**:iphone:, realice un proyecto fullsta
 <p>En la vista estoy recorriendo con foreach para mostrar los datos dentro de un datatable este es un ejemplo de muchas vistas creadas que realice</p></br>
 
 ![image](https://github.com/josiasisrael14/SistemaLotes/assets/43103053/78d4a341-fa59-4c88-88c8-afd1d61ed620)
+
+
+
+
+
 
 
 
