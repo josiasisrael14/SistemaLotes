@@ -1,7 +1,20 @@
 # SistemaLotes
 # Hey there! :wave::smiley:
-Hola soy jairo! soy **Programador Backend**:iphone:, realice un api rest **para un proyecto de facturacion electronica usando web service en net core **:earth_asia:. Me apasiona la programacion  **dale una estrella** realice los servicios de crear, listar,editar,eliminar cada dia trato de ser mejor programador :computer: gracias por visitarme.
+Hola soy jairo! soy **Programador Backend**:iphone:, realice un proyecto fullstack , un sistema de venta de lotes  ** usando net core MVC la arquitectura modelo vista controlador **:earth_asia:. Me apasiona la programacion  **dale una estrella** en este proyecto tambien se uso las tecnologias para el lado del frontend ,cada dia trato de ser mejor programador :computer: gracias por visitarme.
 <br>
+<h2>Tecnologias Usadas</h2>
+ <h3>Backend</h3>
+ . Net core c#</br>
+ .Entity framework</br>
+ .sql server</br>
+ 
+ <h3>Frontend</h3>
+ .Html</br>
+ .css estilos</br>
+ .Boostrap</br>
+ .Javascript</br>
+ .jquery</br>
+ 
 <img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="40"> <em><b>me encanta conectar con las personas sigueme en las siguientes redes sociales</em>
 
 <!-- Your badges -->
