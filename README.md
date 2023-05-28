@@ -18,4 +18,13 @@ Hola soy jairo! soy **Programador Backend**:iphone:, realice un proyecto fullsta
 <img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="40"> <em><b>me encanta conectar con las personas sigueme en las siguientes redes sociales</em>
 
 <!-- Your badges -->
-[![Linkedin](https://img.shields.io/badge/-JairoAyllon-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/jairo-andre-ayllon-cardenas-9bb46b202/)
+[![Linkedin](https://img.shields.io/badge/-JairoAyllon-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/jairo-andre-ayllon-cardenas-9bb46b202/)</br>
+
+<h1>Introduccion al Sistema</h1>
+<p>Estoy usando stor procedure(procedimientos almacenados para solo llamar las clases a implementar</p>
+.<h2>Procedimientos almacenados</h2></br>
+
+![image](https://github.com/josiasisrael14/SistemaLotes/assets/43103053/0c9e1aae-0a49-4668-b6b4-bd8c178770b6)
+
+
+
